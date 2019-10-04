@@ -10,14 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:background="@android:color/black">
+        android:background="@color/colorAccent">
 
         <TextView
             android:id="@+id/text_view_priority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:text="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -29,14 +29,14 @@
             android:layout_toStartOf="@id/text_view_priority"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:text="Title"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/text_view_description"
             android:layout_width="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_title"
             android:text="Description" />
