@@ -7,14 +7,21 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+/** Even though we can use Room with the DAO abstract methods we created in the Database class
+ *  Its better to use a intermediary class in which we keep the instances of the DAO(s) and provide the wrappers for calling the dao methods
+ *  e.g: doing db operations in background using AsyncTasks
+ *  Also, we can cache the data and keep them in this class as well.
+ * **/
 public class NoteRepository {
     private NoteDAO noteDao;
     private LiveData<List<Note>> allNotes;
 
     public NoteRepository(Application application) {
         NoteDatabase database = NoteDatabase.getInstance(application);
-        noteDao = database.noteDao();
+        noteDao = database.getNoteDao();
         allNotes = noteDao.getAllNotes(); // NOTE: this are all abstract methods, but how are we calling them ? Room has provided implementations for them that we don't need to bother about.
+        // TODO: why calling noteDao method getAllNotes() without an asynctask? We called all other noteDao methods using asyntTask e.g: noteDao.update(),noteDao.delete() etc
+
     }
 
     public void insert(Note note) {
@@ -93,4 +100,5 @@ public class NoteRepository {
             return null;
         }
     }
+
 }

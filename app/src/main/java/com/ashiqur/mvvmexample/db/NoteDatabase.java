@@ -20,9 +20,10 @@ public abstract class NoteDatabase extends RoomDatabase {
     private static String DB_NAME = "note_database";
     private static NoteDatabase instance;
 
-    public abstract NoteDAO noteDao();
+    public abstract NoteDAO getNoteDao();
 
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -45,12 +46,12 @@ public abstract class NoteDatabase extends RoomDatabase {
         private NoteDAO noteDao;
 
         private PopulateDbAsyncTask(NoteDatabase db) {
-            noteDao = db.noteDao();
+            noteDao = db.getNoteDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            //TODO:
+            //TODO: might need to remove these
             noteDao.insert(new Note("Title 1", "Description 1", 1));
             noteDao.insert(new Note("Title 2", "Description 2", 2));
             noteDao.insert(new Note("Title 3", "Description 3", 3));

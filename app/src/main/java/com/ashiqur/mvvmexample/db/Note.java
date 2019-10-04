@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 /*
-  "@Entity" annotation ensures that this class should be generated as a SQL table.Bydefault,
+  "@Entity" annotation ensures that this class should be generated as a SQL table.By default,
   All fields in this class would be columns of the SQL table.
   If you don't want to include a specific field in the actual SQL table use the ignore annotation like this:
   "@Ignore"
@@ -17,14 +17,6 @@ import androidx.room.PrimaryKey;
 /**
  * Know about other useful room annotations here: https://medium.com/@tonyowen/room-entity-annotations-379150e1ca82
  **/
-
-class NoteConstants {
-    static final String TABLE_NAME = "note_table";
-    static final String ATTR_PRIORITY = "priority";
-    static final String ATTR_TITLE = "title";
-    static final String ATTR_DESCRIPTION = "description";
-    static final String ATTR_ID = "id";
-}
 
 @Entity(tableName = NoteConstants.TABLE_NAME)
 // By default the table would've been named the java class's name but this allows us to change the name.
@@ -75,4 +67,12 @@ public class Note {
     public String toString() {
         return title+":"+description;
     }
+}
+
+class NoteConstants {
+    static final String TABLE_NAME = "note_table";
+    static final String ATTR_PRIORITY = "priority";
+    static final String ATTR_TITLE = "title";
+    static final String ATTR_DESCRIPTION = "description";
+    static final String ATTR_ID = "id";
 }
