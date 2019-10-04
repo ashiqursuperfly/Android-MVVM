@@ -20,16 +20,6 @@ public abstract class NoteDatabase extends RoomDatabase {
     private static String DB_NAME = "note_database";
     private static NoteDatabase instance;
 
-    public static synchronized NoteDatabase getInstance(Context context) {
-        if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(),
-                    NoteDatabase.class, DB_NAME)
-                    .fallbackToDestructiveMigration() /* Here we are using destructive migration strategy i.e, whenever we make changes to the db and increment the version number,room will destroy the previous db and start over with the new version number */
-                    .build();
-        }
-        return instance;
-    }
-
     public abstract NoteDAO noteDao();
 
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
@@ -40,6 +30,17 @@ public abstract class NoteDatabase extends RoomDatabase {
         }
     };
 
+    public static synchronized NoteDatabase getInstance(Context context) {
+        if (instance == null) {
+            instance = Room.databaseBuilder(context.getApplicationContext(),
+                    NoteDatabase.class, DB_NAME)
+                    .fallbackToDestructiveMigration() /* Here we are using destructive migration strategy i.e, whenever we make changes to the db and increment the version number,room will destroy the previous db and start over with the new version number */
+                    .addCallback(roomCallback)
+                    .build();
+        }
+        return instance;
+    }
+
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private NoteDAO noteDao;
 
@@ -49,6 +50,7 @@ public abstract class NoteDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
+            //TODO:
             noteDao.insert(new Note("Title 1", "Description 1", 1));
             noteDao.insert(new Note("Title 2", "Description 2", 2));
             noteDao.insert(new Note("Title 3", "Description 3", 3));
