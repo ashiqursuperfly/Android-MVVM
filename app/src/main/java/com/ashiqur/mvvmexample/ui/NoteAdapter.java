@@ -31,6 +31,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
         holder.textViewTitle.setText(currentNote.getTitle());
         holder.textViewDescription.setText(currentNote.getDescription());
         holder.textViewPriority.setText(String.valueOf(currentNote.getPriority()));
+        holder.textViewDate.setText(currentNote.getDate().toString());
     }
 
     @Override
@@ -51,12 +52,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
         private TextView textViewTitle;
         private TextView textViewDescription;
         private TextView textViewPriority;
+        private TextView textViewDate;
 
         public NoteHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
             textViewPriority = itemView.findViewById(R.id.text_view_priority);
+            textViewDate = itemView.findViewById(R.id.text_view_date);
         }
     }
 }

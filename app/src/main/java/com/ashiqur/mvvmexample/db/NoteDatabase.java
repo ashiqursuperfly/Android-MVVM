@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 
@@ -15,6 +17,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
  **/
 /* comma separate the entity classes(pojo) inside the entities = {} this will convert each of the pojos in to a table inside this database */
 @Database(entities = {Note.class}, version = 1) /* We need to have specify room the migration strategies if we need to increment the version of the database */
+@TypeConverters(DateConverter.class)
 public abstract class NoteDatabase extends RoomDatabase {
 
     private static String DB_NAME = "note_database";
