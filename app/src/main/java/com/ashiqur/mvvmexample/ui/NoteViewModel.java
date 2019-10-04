@@ -1,4 +1,4 @@
-package com.ashiqur.mvvmexample.db.ui;
+package com.ashiqur.mvvmexample.ui;
 
 import android.app.Application;
 

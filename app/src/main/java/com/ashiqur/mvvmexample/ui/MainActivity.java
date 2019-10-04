@@ -1,4 +1,4 @@
-package com.ashiqur.mvvmexample.db.ui;
+package com.ashiqur.mvvmexample.ui;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +21,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
 
         noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(@Nullable List<Note> notes) {
                 //update RecyclerView
-                Toast.makeText(MainActivity.this, "onChanged"+notes.get(0).getDescription(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "onChanged"+notes.get(0), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
 }

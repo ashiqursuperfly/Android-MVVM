@@ -1,5 +1,6 @@
 package com.ashiqur.mvvmexample.db;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -28,7 +29,6 @@ class NoteConstants {
 @Entity(tableName = NoteConstants.TABLE_NAME)
 // By default the table would've been named the java class's name but this allows us to change the name.
 public class Note {
-
 
     //autoGenerate = true => auto generate id after each insertion on the table (exactly like 'serial' in postgres)
     @PrimaryKey(autoGenerate = true)
@@ -68,5 +68,11 @@ public class Note {
 
     public int getPriority() {
         return priority;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return title+":"+description;
     }
 }
