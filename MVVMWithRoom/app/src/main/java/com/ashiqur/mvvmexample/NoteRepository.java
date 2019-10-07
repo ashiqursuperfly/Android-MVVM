@@ -1,9 +1,13 @@
-package com.ashiqur.mvvmexample.db;
+package com.ashiqur.mvvmexample;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+
+import com.ashiqur.mvvmexample.db.Note;
+import com.ashiqur.mvvmexample.db.NoteDAO;
+import com.ashiqur.mvvmexample.db.NoteDatabase;
 
 import java.util.List;
 
